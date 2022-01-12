@@ -15,3 +15,7 @@ pip install -r requirements.txt
 ```
 python osint.py -h
 ```
+
+### Example
+
+![example.png](https://cdn.upload.systems/uploads/79LR76P8.png)
