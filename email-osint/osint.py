@@ -1,22 +1,29 @@
 import re
 import sys
+from argparse import ArgumentParser
 
 from modules import *
 
 regex = re.compile(r"([\w\-\.]+)(?:@)(\w[\w\-]+\.+[\w\-]+)", re.IGNORECASE)
 
-def main(email: str):
-	EmailRep(email).execute()
-	LeakCheck(email).execute()
-	Spotify(email).execute()
-	Twitter(email).execute()
-	Venmo(email).execute()
+def main():
+	parser = ArgumentParser(description="Email-OSINT")
+	parser.add_argument("email", help="Target email (test@example.com)")
+	parser.add_argument("--no-breach", default=False, required=False, action="store_true", dest="nobreach", help="Skip the breach check stage")
+	args = parser.parse_args()
 
-if __name__ == "__main__":
-	if len(sys.argv) != 2:
-		print("You must only specify a email")
-		sys.exit(1)
-	if not bool(regex.match(sys.argv[1])):
+	if not bool(regex.match(args.email)):
 		print("That is not a valid email")
 		sys.exit(1)
-	main(sys.argv[1])
+
+	if not args.nobreach:
+		LeakCheck(args.email).execute()
+
+	EmailRep(args.email).execute()
+	Spotify(args.email).execute()
+	Twitter(args.email).execute()
+	Venmo(args.email).execute()
+	Snapchat(args.email).execute()
+
+if __name__ == "__main__":
+	main()
