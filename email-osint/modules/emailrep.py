@@ -19,4 +19,4 @@ class EmailRep:
             print(res)
             results.add(res)
         except AttributeError:
-            print("[ Email Reputation ] --> Error fetching response\n", end='')
+            print("[ Email Reputation ] --> Error fetching response\n")

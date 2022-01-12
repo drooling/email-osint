@@ -22,6 +22,6 @@ class Venmo:
         response = requests.post('https://venmo.com/api/v5/users', headers=headers, data=data)
         if "Not acceptable" not in response.text:
             if "That email is already registered in our system." in response.text:
-                print("[ Venmo ] --> Email is linked to Venmo account")
+                print("[ Venmo ] --> Email is linked to Venmo account\n")
             else:
-                print("[ Venmo ] --> Email is NOT linked to Venmo account")
+                print("[ Venmo ] --> Email is NOT linked to Venmo account\n")
