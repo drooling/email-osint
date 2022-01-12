@@ -18,4 +18,4 @@ python osint.py -h
 
 ### Example
 
-![example.png](https://cdn.upload.systems/uploads/79LR76P8.png)
+![example.png](https://camo.githubusercontent.com/5185c647b160e21dc75d219188068f05977d6da39d4da41182321ada405e5c24/68747470733a2f2f63646e2e75706c6f61642e73797374656d732f75706c6f6164732f37394c52373650382e706e67)
