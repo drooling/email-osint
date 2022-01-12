@@ -1,6 +1,6 @@
 # email-osint
 
-##Install
+## Install
 
 ```
 git clone https://github.com/zombifications/email-osint/
@@ -8,9 +8,9 @@ cd email-osint && cd email-osint
 pip install -r requirements.txt
 ```
 
-##Usage
+## Usage
 
-###CLI
+### CLI
 
 ```
 python osint.py -h
