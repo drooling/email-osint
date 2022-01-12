@@ -8,8 +8,8 @@ regex = re.compile(r"([\w\-\.]+)(?:@)(\w[\w\-]+\.+[\w\-]+)", re.IGNORECASE)
 
 def main():
 	parser = ArgumentParser(description="Email-OSINT")
-	parser.add_argument("email", help="Target email (test@example.com)")
-	parser.add_argument("--no-breach", default=False, required=False, action="store_true", dest="nobreach", help="Skip the breach check stage")
+	parser.add_argument("email", help="Target email")
+	parser.add_argument("--no-breach", "-nb", default=False, required=False, action="store_true", dest="nobreach", help="Skip the breach check stage")
 	args = parser.parse_args()
 
 	if not bool(regex.match(args.email)):
