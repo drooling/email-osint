@@ -9,7 +9,7 @@ class EmailRep:
         resp = requests.get("https://emailrep.io/{0}".format(self.email)).json()
         results = set()
         try:
-            print("\n[ Email Reputation ] -->", end='\r', flush=True)
+            print("[ Email Reputation ] -->", end='\r', flush=True)
             for key, value in resp.get("details").items():
                 if key != "profiles":
                     res = key.replace('_', ' ').title() + ': ' + str(value)

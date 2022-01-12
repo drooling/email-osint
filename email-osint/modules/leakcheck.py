@@ -55,7 +55,7 @@ class LeakCheck:
 			self.key = str(getpass.getpass(prompt="What is your leakcheck.net API key? "))
 			cached = False
 		if not self.__validate__(cached):
-			return print("\n[ Leak Check ] --> Invalid API key\n")
+			return print("[ Leak Check ] --> Invalid API key\n")
 		if self.premium:
 			resp = requests.get("https://leakcheck.net/api?key={0}&check={1}&type=email".format(self.key, self.email)).json()
 		elif not self.premium:
@@ -81,4 +81,4 @@ class LeakCheck:
 						destination.close()
 					print("[ Extraction ] --> Results have been saved in a file on your Desktop\n")
 		else:
-			print("\n[ Leak Check ] --> No breaches found\n")
+			print("[ Leak Check ] --> No breaches found\n")
