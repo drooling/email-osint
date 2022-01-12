@@ -29,6 +29,10 @@ class LeakCheck:
 				try:
 					with open('config/keys.json', 'x+') as dest:
 						dest.write(json.dumps({"leakcheck": str(self.key)}, indent=4))
+				except FileNotFoundError:
+					os.mkdir('config')
+					with open('config/keys.json', 'x+') as dest:
+						dest.write(json.dumps({"leakcheck": str(self.key)}, indent=4))
 				except FileExistsError:
 					with open('config/keys.json', 'w+') as dest:
 						try:
