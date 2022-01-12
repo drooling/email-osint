@@ -1,3 +1,17 @@
 # email-osint
 
-Email OSINT tool I made in like 2 hours because im built different like that
+##Install
+
+```
+git clone https://github.com/zombifications/email-osint/
+cd email-osint && cd email-osint
+pip install -r requirements.txt
+```
+
+##Usage
+
+###CLI
+
+```
+python osint.py -h
+```
