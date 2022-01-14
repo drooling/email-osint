@@ -33,6 +33,7 @@ def main():
 	if not args.nobreach:
 		LeakCheck(args.email).execute()
 
+	PsbDump(args.email).execute()
 	EmailRep(args.email).execute()
 	Spotify(args.email).execute()
 	Twitter(args.email).execute()
