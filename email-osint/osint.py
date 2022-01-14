@@ -22,6 +22,7 @@ def main():
 	parser = ArgumentParser(description="Email-OSINT")
 	parser.add_argument("email", help="Target email")
 	parser.add_argument("--no-breach", "-nb", default=False, required=False, action="store_true", dest="nobreach", help="Skip the breach check stage")
+	parser.add_argument("--no-paste", "-np", default=False, required=False, action="store_true", dest="nopaste", help="Skip the paste check stage")
 	args = parser.parse_args()
 
 	banner()
@@ -33,8 +34,10 @@ def main():
 	if not args.nobreach:
 		LeakCheck(args.email).execute()
 
-	PsbDump(args.email).execute()
-	Pastebin(args.email).execute()
+	if not args.nopaste:
+		PsbDump(args.email).execute()
+		Pastebin(args.email).execute()
+
 	EmailRep(args.email).execute()
 	Spotify(args.email).execute()
 	Twitter(args.email).execute()
