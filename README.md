@@ -3,7 +3,7 @@
 ## Install
 
 ```
-git clone https://github.com/zombifications/email-osint/
+git clone https://github.com/9sv/email-osint/
 cd email-osint && cd email-osint
 pip install -r requirements.txt
 ```
