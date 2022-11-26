@@ -13,6 +13,17 @@ class LeakCheck:
         self.key = None
         self.premium = None
 
+    def getBool(input_) -> bool:
+        return bool(
+            len(
+                difflib.get_close_matches(
+                    str(input(input_)),
+                    ["yes", "y"],
+                )
+            )
+            >= 1
+        )
+
     def __validate__(self, cached: bool):
         resp = requests.get(
             "https://leakcheck.net/api?key={0}&check=valid&type=login".format(self.key)
@@ -30,15 +41,7 @@ class LeakCheck:
             return False
         self.premium = True
         if not cached:
-            save = bool(
-                len(
-                    difflib.get_close_matches(
-                        str(input("Would you like to save this for next time? ")),
-                        ["yes", "y"],
-                    )
-                )
-                >= 1
-            )
+            save = self.getBool("Would you like to save this for next time? ")
             if save:
                 try:
                     with open("config/keys.json", "x+") as dest:
@@ -100,19 +103,7 @@ class LeakCheck:
                     res = f"\n[ Breach ] --> \nCombo: {breach.get('line')}\nLast Exposed: {breach.get('last_breach') or 'Unknown'}\nExposed in: {', '.join(breach.get('sources')) or 'Unknown breach'}\n"
                     print(res)
                     results.add(res)
-                extract = bool(
-                    len(
-                        difflib.get_close_matches(
-                            str(
-                                input(
-                                    "Would you like to extract these results to a file? "
-                                )
-                            ),
-                            ["yes", "y"],
-                        )
-                    )
-                    >= 1
-                )
+                extract = self.getBool("Would you like to extract these results to a file? ")
                 if extract:
                     with open(
                         str(
