@@ -1,7 +1,7 @@
 import requests
 
 class PsbDump:
-    def __init__(self, email) -> None:
+    def __init__(self, email):
         self.email = email
 
     def execute(self):

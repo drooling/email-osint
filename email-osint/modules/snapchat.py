@@ -5,18 +5,18 @@ from bs4 import BeautifulSoup
 
 
 class Snapchat:
-	def __init__(self, email: str) -> None:
+	def __init__(self, email: str):
 		self.email = email
 		self.xsrf = None
 		self.web_client = None
 
-	def get_cookies(self) -> None:
+	def get_cookies(self):
 		resp = requests.get("https://accounts.snapchat.com").text
 		soup = BeautifulSoup(resp, 'html.parser')
 		self.xsrf = soup.find("div", attrs={'id': 'login-root'}).attrs.get("data-xsrf")
 		self.web_client = soup.find("div", attrs={'id': 'login-root'}).attrs.get("data-web-client-id")
 
-	def execute(self) -> None:
+	def execute(self):
 		self.get_cookies()
 		headers = {
 			"Host": "accounts.snapchat.com",

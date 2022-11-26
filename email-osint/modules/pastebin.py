@@ -5,16 +5,21 @@ import googlesearch
 
 
 class Pastebin:
-    def __init__(self, email) -> None:
+    def __init__(self, email):
         self.email = email
 
-    def cleanup(self) -> None:
+    def cleanup(self):
         if os.path.exists(".google-cookie"):
             os.remove(".google-cookie")
 
-    def execute(self) -> None:
+    def execute(self):
         try:
-            resp = [_ for _ in googlesearch.search('site:pastebin.com intext:"{0}"'.format(self.email))]
+            resp = [
+                _
+                for _ in googlesearch.search(
+                    'site:pastebin.com intext:"{0}"'.format(self.email)
+                )
+            ]
         except HTTPError:
             self.cleanup()
             return print("[ Pastebin Dork ] --> Rate limited\n")
