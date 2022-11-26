@@ -7,19 +7,16 @@ class EmailRep:
 
     def execute(self):
         resp = requests.get("https://emailrep.io/{0}".format(self.email)).json()
-        results = []
         try:
             print("[ Email Reputation ] -->", end="\r", flush=True)
+            print("\n")
             for key, value in resp.get("details").items():
                 if key != "profiles":
-                    res = key.replace("_", " ").title() + ": " + str(value)
-                    results.append(res)
-            res = "Profiles: " + (
-                ", ".join(resp.get("details").get("profiles")) or "None"
+                    print(key.replace("_", " ").title() + ": " + str(value))
+            print(
+                "Profiles: "
+                + (", ".join(resp.get("details").get("profiles")) or "None")
             )
-            results.append(res)
-            print("\n")
-            [print(resu) for resu in results]
             print("\n")
         except AttributeError:
             print("[ Email Reputation ] --> Error fetching response\n")
