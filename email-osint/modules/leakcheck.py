@@ -13,7 +13,7 @@ class LeakCheck:
         self.key = None
         self.premium = None
 
-    def getBool(input_) -> bool:
+    def getConfirmation(input_) -> bool:
         return bool(
             len(
                 difflib.get_close_matches(
@@ -41,7 +41,7 @@ class LeakCheck:
             return False
         self.premium = True
         if not cached:
-            save = self.getBool("Would you like to save this for next time? ")
+            save = self.getConfirmation("Would you like to save this for next time? ")
             if save:
                 try:
                     with open("config/keys.json", "x+") as dest:
@@ -103,7 +103,7 @@ class LeakCheck:
                     res = f"\n[ Breach ] --> \nCombo: {breach.get('line')}\nLast Exposed: {breach.get('last_breach') or 'Unknown'}\nExposed in: {', '.join(breach.get('sources')) or 'Unknown breach'}\n"
                     print(res)
                     results.add(res)
-                extract = self.getBool("Would you like to extract these results to a file? ")
+                extract = self.getConfirmation("Would you like to extract these results to a file? ")
                 if extract:
                     with open(
                         str(
